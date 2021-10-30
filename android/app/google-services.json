@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "733371380775",
+    "project_id": "stuk-23465",
+    "storage_bucket": "stuk-23465.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733371380775:android:9d43c942304711b9df4a02",
+        "android_client_info": {
+          "package_name": "com.example.stuk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733371380775-fg9nr7pvmo1ijgnaqdiqqj7406bcl9sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLK-vnBNlGMOK9isWT6y7wjtNXAJ0O2OM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733371380775-fg9nr7pvmo1ijgnaqdiqqj7406bcl9sq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
