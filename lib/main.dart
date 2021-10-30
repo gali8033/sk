@@ -37,6 +37,7 @@ class App extends StatelessWidget {
             '/settings': (context) => Settings(),
             '/card': (context) => CardScreen(),
             '/register': (context) => RegisterScreen(),
+            '/login': (context) => LoginScreen(),
           }),
     );
   }

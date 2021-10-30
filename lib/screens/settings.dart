@@ -43,7 +43,14 @@ class _SettingsState extends State<Settings> {
           FirebaseFirestore.instance.collection('users');
       String imageURL = await res.ref.getDownloadURL();
       users.doc(firebaseUser.uid).update({'cardImageURL': imageURL});
+      print('Image uploaded: $imageURL');
     });
+  }
+
+  Future<void> logout(BuildContext context) async {
+    await context.read<AuthenticationService>().signOut();
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
   }
 
   @override
@@ -63,29 +70,54 @@ class _SettingsState extends State<Settings> {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
+          SizedBox(height: 10.0),
+          Text(
+            'Upload image of card',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           OutlinedButton(
             child: const Text('Choose Image of Card'),
-            onPressed: () {
-              pickImage();
+            onPressed: () async {
+              await pickImage();
             },
           ),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: Text(fileName),
+            child: imageFile != null
+                ? Image.file(
+                    imageFile!,
+                    width: 400,
+                    height: 200,
+                    fit: BoxFit.fitHeight,
+                  )
+                : Text('No image selected'),
           ),
-          OutlinedButton(
-            onPressed: () {
-              uploadImage(context, firebaseUser!);
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(200, 50),
+              primary: Colors.grey[900],
+            ),
+            onPressed: () async {
+              await uploadImage(context, firebaseUser!);
             },
             child: const Text('Upload'),
           ),
-          OutlinedButton(
-            onPressed: () {
-              context.read<AuthenticationService>().signOut();
-              Navigator.pushReplacementNamed(context, '/');
-            },
-            child: const Text('Logout'),
+          Container(
+            padding: EdgeInsets.all(20.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 50),
+                primary: Colors.redAccent,
+              ),
+              onPressed: () async {
+                await logout(context);
+              },
+              child: const Text('Logout'),
+            ),
           ),
         ],
       ),

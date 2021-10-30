@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationService {
@@ -13,7 +15,7 @@ class AuthenticationService {
           email: email, password: password);
       return 'signed in';
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message); // TODO: Fix this // TODO: Fix this
+      throw exitCode; // TODO: Fix this // TODO: Fix this
     }
   }
 
@@ -24,7 +26,7 @@ class AuthenticationService {
           .createUserWithEmailAndPassword(email: email, password: password);
       return result.user!.uid;
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.message); // TODO: Fix this
+      throw e; // TODO: Fix this
     }
   }
 
