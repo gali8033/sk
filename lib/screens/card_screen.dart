@@ -57,38 +57,12 @@ class _CardScreenState extends State<CardScreen> {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     SizedBox(height: 50),
-                    CarouselSlider(
-                      items: [
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: CardFlipper(
-                              network:
-                                  snapshot.requireData['cardImageURL'] != null
-                                      ? true
-                                      : false,
-                              cardFront:
-                                  snapshot.requireData['cardImageURL'] ?? card,
-                              cardBack: 'assets/images/card-flipped.png'),
-                        ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(20.0),
-                        //   child: CardFlipper(
-                        //       cardFront: 'assets/images/card-back.png',
-                        //       cardBack: 'assets/images/card-flipped.png'),
-                        // ),
-                      ],
-                      options: CarouselOptions(
-                        enlargeCenterPage: true,
-                        autoPlay: false,
-                        aspectRatio: 0.6,
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        enableInfiniteScroll: false,
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
-                        viewportFraction: 1,
-                        onPageChanged: (index, reason) {
-                          onCardChange();
-                        },
-                      ),
+                    CardFlipper(
+                      network: snapshot.requireData['cardImageURL'] != null
+                          ? true
+                          : false,
+                      cardFront: snapshot.requireData['cardImageURL'] ?? card,
+                      cardBack: 'assets/images/card-flipped.png',
                     ),
                     Container(
                       decoration: BoxDecoration(
