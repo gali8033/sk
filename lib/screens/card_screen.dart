@@ -56,7 +56,7 @@ class _CardScreenState extends State<CardScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    SizedBox(height: 50),
+                    SizedBox(height: 30),
                     CardFlipper(
                       network: snapshot.requireData['cardImageURL'] != null
                           ? true
@@ -68,6 +68,7 @@ class _CardScreenState extends State<CardScreen> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(bottomBarImage),
+                          fit: BoxFit.contain,
                         ),
                       ),
                       width: double.infinity,

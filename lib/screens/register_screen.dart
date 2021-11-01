@@ -4,6 +4,38 @@ import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 import 'package:stuk/authentication_service.dart';
 
+String getMessageFromErrorCode(error) {
+  switch (error) {
+    case "ERROR_EMAIL_ALREADY_IN_USE":
+    case "account-exists-with-different-credential":
+    case "email-already-in-use":
+      return "Email already used. Go to login page.";
+    case "ERROR_WRONG_PASSWORD":
+    case "wrong-password":
+      return "Wrong email/password combination.";
+    case "ERROR_USER_NOT_FOUND":
+    case "user-not-found":
+      return "No user found with this email.";
+    case "ERROR_USER_DISABLED":
+    case "user-disabled":
+      return "User disabled.";
+    case "ERROR_TOO_MANY_REQUESTS":
+    case "operation-not-allowed":
+      return "Too many requests to log into this account.";
+    case "ERROR_OPERATION_NOT_ALLOWED":
+    case "operation-not-allowed":
+      return "Server error, please try again later.";
+    case "ERROR_INVALID_EMAIL":
+    case "invalid-email":
+      return "Email address is invalid.";
+    case "ERROR_WEAK_PASSWORD":
+    case "weak-password":
+      return "Too weak password.";
+    default:
+      return "Register failed. Please try again.";
+  }
+}
+
 class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -130,8 +162,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .catchError((error) => print('Error adding user'));
 
                   Navigator.pop(context);
-                } on Exception catch (e) {
+                } on FirebaseAuthException catch (e) {
+                  setState(() {
+                    errorMessage = getMessageFromErrorCode(e.code);
+                  });
+                } catch (e) {
                   print(e);
+                  setState(() {
+                    errorMessage =
+                        'Something went wrong, please try again later!';
+                  });
                 }
               },
               child: Text('Register'),
@@ -150,8 +190,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Text(
             error,
             style: TextStyle(
-              color: Colors.redAccent,
+              fontSize: 15.0,
               fontWeight: FontWeight.bold,
+              color: Colors.red,
             ),
           ),
         ],

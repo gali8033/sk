@@ -17,7 +17,7 @@ class _StartState extends State<Start> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/start.PNG"),
-              fit: BoxFit.contain,
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(

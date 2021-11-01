@@ -15,7 +15,7 @@ class AuthenticationService {
           email: email, password: password);
       return 'signed in';
     } on FirebaseAuthException catch (e) {
-      throw exitCode; // TODO: Fix this // TODO: Fix this
+      throw e; // TODO: Fix this // TODO: Fix this
     }
   }
 

@@ -33,8 +33,7 @@ class _SettingsState extends State<Settings> {
 
     FirebaseStorage storage = FirebaseStorage.instance;
 
-    Reference ref =
-        storage.ref().child('cards/$fileName' + DateTime.now().toString());
+    Reference ref = storage.ref().child('cards/$fileName');
 
     UploadTask uploadTask = ref.putFile(imageFile!);
     uploadTask.then((res) async {

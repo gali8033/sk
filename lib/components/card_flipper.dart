@@ -18,7 +18,7 @@ class CardFlipper extends StatelessWidget {
         child: RotatedBox(
           quarterTurns: 1,
           child: Container(
-            width: MediaQuery.of(context).size.width * 1.4,
+            width: MediaQuery.of(context).size.width * 1.3,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: (network
@@ -31,7 +31,7 @@ class CardFlipper extends StatelessWidget {
       ),
       back: Container(
         child: Container(
-          width: MediaQuery.of(context).size.width * 1.5,
+          width: MediaQuery.of(context).size.width * 1.3,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(cardBack),
