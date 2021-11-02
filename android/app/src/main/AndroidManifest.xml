@@ -2,7 +2,7 @@
     package="com.example.stuk">
    <application
         android:label="Studentkortet"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

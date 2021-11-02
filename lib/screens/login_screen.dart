@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           SizedBox(height: 50.0),
           Text(
-            'Login',
+            'Logini',
             style: TextStyle(
               fontSize: 20.0,
               letterSpacing: 1.5,
