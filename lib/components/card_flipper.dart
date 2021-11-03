@@ -13,12 +13,13 @@ class CardFlipper extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlipCard(
       fill: Fill.fillBack,
-      direction: FlipDirection.HORIZONTAL, // default
+      direction: FlipDirection.HORIZONTAL,
+      speed: 400, // default
       front: Container(
         child: RotatedBox(
           quarterTurns: 1,
           child: Container(
-            width: MediaQuery.of(context).size.width * 1.3,
+            width: MediaQuery.of(context).size.width * 1.5,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: (network
